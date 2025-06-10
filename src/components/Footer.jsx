@@ -1,105 +1,113 @@
-import React from "react";
-import { Link } from "react-scroll";
+import React, { useState } from "react";
 
 const Footer = () => {
+  const [currency, setCurrency] = useState("INR");
+
   return (
-    <div className=" bg-backgroundColor text-white rounded-t-3xl mt-8 md:mt-0">
-      <div className="flex flex-col md:flex-row justify-between p-8 md:px-32 px-5">
-        <div className=" w-full md:w-1/4">
-          <h1 className=" font-semibold text-xl pb-4">WellnessVista</h1>
-          <p className=" text-sm">
-            Our team of dedicated doctors, each specializing in unique fields
-            such as orthopedics, cardiology, pediatrics, neurology, dermatology,
-            and more.
+    <footer className="bg-white py-12 px-4 md:px-16 border-t border-gray-200">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+          {/* Website Name */}
+          <div className="md:col-span-1">
+            <h3 className="text-xl font-bold text-gray-800 mb-4">TalentHub</h3>
+          </div>
+
+          {/* Social Media Links */}
+          <div>
+            <ul className="space-y-3 text-gray-600">
+              <li>
+                <a href="#" className="hover:text-yellow-500 transition-colors">
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-yellow-500 transition-colors">
+                  Facebook
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-yellow-500 transition-colors">
+                  Pinterest
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-yellow-500 transition-colors">
+                  YouTube
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Policies */}
+          <div>
+            <ul className="space-y-3 text-gray-600">
+              <li>
+                <a href="#" className="hover:text-yellow-500 transition-colors">
+                  Return Policy
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-yellow-500 transition-colors">
+                  Track An Order
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-yellow-500 transition-colors">
+                  FAQs
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-yellow-500 transition-colors">
+                  Privacy Policy
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Company Info */}
+          <div>
+            <ul className="space-y-3 text-gray-600">
+              <li>
+                <a href="#" className="hover:text-yellow-500 transition-colors">
+                  Our Story
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-yellow-500 transition-colors">
+                  Careers
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-yellow-500 transition-colors">
+                  Press
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Currency Selector */}
+          <div className="md:col-span-1 md:text-right">
+            <select
+              value={currency}
+              onChange={(e) => setCurrency(e.target.value)}
+              className="border border-gray-300 rounded px-3 py-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            >
+              <option value="INR">INR</option>
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="GBP">GBP</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Bottom Section */}
+        <div className="mt-12 pt-8 border-t border-gray-200 text-center">
+          <p className="text-sm text-gray-500">
+            Designed by TalentHub Team
           </p>
         </div>
-        <div>
-          <h1 className=" font-medium text-xl pb-4 pt-5 md:pt-0">About Us</h1>
-          <nav className=" flex flex-col gap-2">
-            <Link
-              to="about"
-              spy={true}
-              smooth={true}
-              duration={500}
-              className=" hover:text-hoverColor transition-all cursor-pointer"
-            >
-              About
-            </Link>
-            <Link
-              to="services"
-              spy={true}
-              smooth={true}
-              duration={500}
-              className=" hover:text-hoverColor transition-all cursor-pointer"
-            >
-              Services
-            </Link>
-            <Link
-              to="doctors"
-              spy={true}
-              smooth={true}
-              duration={500}
-              className=" hover:text-hoverColor transition-all cursor-pointer"
-            >
-              Doctors
-            </Link>
-          </nav>
-        </div>
-        <div>
-          <h1 className=" font-medium text-xl pb-4 pt-5 md:pt-0">Services</h1>
-          <nav className=" flex flex-col gap-2">
-            <Link
-              to="services"
-              spy={true}
-              smooth={true}
-              duration={500}
-              className=" hover:text-hoverColor transition-all cursor-pointer"
-            >
-              Lab Test
-            </Link>
-            <Link
-              to="services"
-              spy={true}
-              smooth={true}
-              duration={500}
-              className=" hover:text-hoverColor transition-all cursor-pointer"
-            >
-              Health Check
-            </Link>
-            <Link
-              to="services"
-              spy={true}
-              smooth={true}
-              duration={500}
-              className=" hover:text-hoverColor transition-all cursor-pointer"
-            >
-              Heart Health
-            </Link>
-          </nav>
-        </div>
-        <div className=" w-full md:w-1/4">
-          <h1 className=" font-medium text-xl pb-4 pt-5 md:pt-0">Contact Us</h1>
-          <nav className=" flex flex-col gap-2">
-            <Link to="/" spy={true} smooth={true} duration={500}>
-              123 Elm Street, Suite 456 Springfield, IL 62701 United States
-            </Link>
-            <Link to="/" spy={true} smooth={true} duration={500}>
-              support@care.com
-            </Link>
-            <Link to="/" spy={true} smooth={true} duration={500}>
-              +123-456-7890
-            </Link>
-          </nav>
-        </div>
       </div>
-      <div>
-        <p className=" text-center py-4">
-          @copyright developed by
-          <span className=" text-hoverColor"> champion programmers</span> | All
-          rights reserved
-        </p>
-      </div>
-    </div>
+    </footer>
   );
 };
 

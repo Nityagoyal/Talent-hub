@@ -1,79 +1,58 @@
 import React, { useState } from "react";
 
-const Contact = ({ closeForm }) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+const Contact = () => {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
-    closeForm();
+    console.log("Email:", email, "Message:", message);
+    // Reset form
+    setEmail("");
+    setMessage("");
+    alert("Thank you for your message! We'll get back to you soon.");
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white p-8 rounded-lg max-w-md w-full mx-4">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-bold">Contact Us</h2>
-          <button onClick={closeForm} className="text-gray-500 hover:text-gray-700 text-2xl">
-            ✕
-          </button>
-        </div>
-        <div className="space-y-4">
+    <section className="py-16 px-4 md:px-16 bg-gray-50">
+      <div className="max-w-2xl mx-auto text-center">
+        <h2 className="text-3xl font-light text-gray-800 mb-8">
+          Need some help? Send us an Email
+        </h2>
+        
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-            <input 
-              type="text" 
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              placeholder="Your name"
+            <input
+              type="email"
+              placeholder="nitya.goyal@gmail.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
             />
           </div>
+          
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-            <input 
-              type="email" 
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              placeholder="your@email.com"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-            <textarea 
+            <textarea
+              placeholder="Your message..."
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              required
               rows="4"
-              name="message"
-              value={formData.message}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              placeholder="Your message"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
             />
           </div>
-          <button 
-            onClick={handleSubmit}
-            className="w-full bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-400 transition"
+          
+          <button
+            type="submit"
+            className="bg-yellow-500 text-black px-8 py-3 rounded-lg hover:bg-yellow-400 transition-colors duration-300 font-medium"
           >
             Send Message
           </button>
-        </div>
+        </form>
       </div>
-    </div>
+    </section>
   );
 };
 
